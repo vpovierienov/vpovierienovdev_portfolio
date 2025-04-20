@@ -1,11 +1,29 @@
+import emailJS from "emailjs-com";
+
 export const Contact = () => {
+    {/* Emails.js send message to email (logic) 
+        3 ID -> e(TARGET) ->     
+        
+    */}
+    const SERVICE_ID = "service_zm5re9z";
+    const TEMPLATE_ID = "template_pegjnp5";
+    const PUBLIC_KEY = "oJH7AfK8xMbxco4Hh";
+
+    const handeSubmit = (e) => {
+        e.preventDefault()
+
+        emailJS.sendForm(SERVICE_ID, TEMPLATE_ID, e.target, PUBLIC_KEY).then((result) => {
+            alert('Message Sent! Thank you!')
+        }
+    )}
+
   return  <section
     id="contact"
     className="min-h-screen flex items-center justify-center py-20"
   >
     <div className="px-4 w-2/3">
         <h2 className="text-3xl font-bold mb-8 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent leading-right text-center">GeT In Touch</h2>
-        <form className="space-y-6"> 
+        <form className="space-y-6" onSubmit={handeSubmit}> 
             <div className="relative">
                 <input 
                 type="text" 
